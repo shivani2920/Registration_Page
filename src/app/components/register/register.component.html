@@ -1,0 +1,57 @@
+<div class="form-wrap">
+  <h1>Student Registration</h1>
+
+  <form [formGroup]="registerForm" (submit)="checkValidation()">
+    <table>
+      <tr>
+        <td>Student Name</td>
+        <td><input type="text" placeholder="Enter Name" formControlName="student_name" name="name" required></td>
+      </tr>
+      <tr>
+        <td>Board</td>
+        <td>
+          <select required (change)="getMedium($event.target.value)" formControlName="board_id" name="boardSelect">
+            <option value="" disabled> Choose Board</option>
+            <option [value]="value.board_id" *ngFor="let value of board">
+              {{value.board_name}}
+            </option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Medium</td>
+        <td>
+          <select  required (change)="getStandard($event.target.value)" formControlName="medium_id" name="mediumSelect">
+            <option value="" disabled> Choose Medium</option>
+            <option [value]="value.medium_id" *ngFor="let value of medium">
+              {{value.medium_name}}
+            </option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Standard</td>
+        <td>
+          <select formControlName="standard_id" name="standardSelect" required>
+            <option value="" disabled> Choose Standard</option>
+            <option [value]="value.standard_id" *ngFor="let value of standard">
+              {{value.standard}}
+            </option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Password</td>
+        <td><input type="password" placeholder="Enter Password"  formControlName="password" name="pswrd" id="pswrd" required></td>
+      </tr>
+      <tr>
+        <td>Confirm Password</td>
+        <td><input type="password" placeholder="Confirm Password" formControlName="confirmPassword" name="confirmPassword" id="confirmPassword" required></td>
+      </tr>
+    </table>
+
+    <button type="submit" class="submit-btn">Submit</button>
+
+  </form>
+
+</div>
